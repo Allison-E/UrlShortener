@@ -1,0 +1,33 @@
+﻿namespace Domain.Entities;
+public class Link
+{
+    public int Id { get; set; }
+
+    /// <summary>
+    /// This is unique for every shortened url and would be used for redirection.
+    /// </summary>
+    public string Alias { get; set; }
+
+    public string Title { get; set; }
+
+    public string Destination { get; set; }
+
+    public IEnumerable<DateClick> Clicks { get; set; }
+
+    public int ClickCount
+    {
+        get
+        {
+            int total = 0;
+            foreach (var click in Clicks)
+            {
+                total += click.Clicks;
+            }
+            return total;
+        }
+    }
+
+    public bool IsActive { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+}
