@@ -1,4 +1,4 @@
-﻿namespace Domain.Models;
+﻿namespace UrlShortener.Domain.Models;
 public class Link
 {
     public int Id { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace Domain.Models;
+﻿namespace UrlShortener.Domain.Models;
 
 /// <summary>
 /// Represents the number of clicks to a link for a specific date.
