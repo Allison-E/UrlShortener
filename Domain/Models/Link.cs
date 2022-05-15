@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities;
+﻿namespace Domain.Models;
 public class Link
 {
     public int Id { get; set; }

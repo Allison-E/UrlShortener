@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities;
+﻿namespace Domain.Models;
 
 /// <summary>
 /// Represents the number of clicks to a link for a specific date.
