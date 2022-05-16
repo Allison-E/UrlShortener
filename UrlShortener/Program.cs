@@ -1,19 +1,27 @@
-using System.Reflection;
+using UrlShortener.Persistence.Extensions;
 using UrlShortener.Presentation;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
 
 // Add services to the container.
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
-builder.Services.AddControllers().AddApplicationPart(typeof(AssemblyReference).Assembly);
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(AssemblyReference).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    var xmlFile = $"{typeof(AssemblyReference).Assembly.GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+});
 builder.Services.AddSwaggerGen();
+builder.Services.AddPersistenceServices(config);
 
 var app = builder.Build();
 
