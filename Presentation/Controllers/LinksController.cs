@@ -4,15 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using UrlShortener.Application.RequestHandlers.Links.Commands.Create;
+using MediatR;
 
 namespace UrlShortener.Presentation.Controllers;
 
 [Route("links")]
 public class LinksController: ControllerBase
 {
-    public LinksController()
-    {
+    IMediator mediator;
 
+    public LinksController(IMediator mediator)
+    {
+        this.mediator = mediator;
     }
 
     [HttpGet("{id}")]
@@ -22,8 +26,8 @@ public class LinksController: ControllerBase
     }
 
     [HttpPost("generate")]
-    public Task<IActionResult> GenerateLink([FromBody] string url)
+    public async Task<IActionResult> GenerateLink([FromBody] CreateLinkCommand createLink, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return Ok(await mediator.Send(createLink));
     }
 }

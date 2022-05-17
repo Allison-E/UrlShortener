@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BIUjc5Cbw9N4p2i/RvC2hW8Q4A7o1G/8tklYlgpovyLB/Zlrwizi2mk5baNFDJmEQx+uGL3j0Cc3HXbQ73rUjg==",
+  "dgSpecHash": "w4m8NS/KVPtxavIi9GXzoxMybFzO+Hm7xJoNC+4D0maUYn3BWfP299wn8KvNxgJyKU8wFpzyYSKzv92B1AVoCA==",
   "success": true,
   "projectFilePath": "C:\\Users\\LAWPAVILION\\source\\repos\\UrlShortener\\UrlShortener\\UrlShortener.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,9 @@
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\azure.security.keyvault.certificates\\4.1.0\\azure.security.keyvault.certificates.4.1.0.nupkg.sha512",
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\azure.security.keyvault.secrets\\4.1.0\\azure.security.keyvault.secrets.4.1.0.nupkg.sha512",
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.4\\microsoft.aspnetcore.authentication.jwtbearer.6.0.4.nupkg.sha512",

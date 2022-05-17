@@ -1,4 +1,5 @@
 using UrlShortener.Persistence.Extensions;
+using UrlShortener.Application.Extensions;
 using UrlShortener.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(config);
+builder.Services.AddApplicationLayer();
 
 var app = builder.Build();
 

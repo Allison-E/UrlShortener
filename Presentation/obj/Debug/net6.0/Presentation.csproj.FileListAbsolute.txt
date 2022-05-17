@@ -12,3 +12,8 @@ C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\obj\Debug\net6.0\Pre
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\obj\Debug\net6.0\ref\Presentation.dll
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\bin\Debug\net6.0\Presentation.xml
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\obj\Debug\net6.0\Presentation.xml
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\bin\Debug\net6.0\Application.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\bin\Debug\net6.0\Domain.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\bin\Debug\net6.0\Application.pdb
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\bin\Debug\net6.0\Domain.pdb
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Presentation\obj\Debug\net6.0\Presentation.csproj.CopyComplete

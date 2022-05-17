@@ -15,3 +15,5 @@ C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\obj\Debug\net6.0\refi
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\obj\Debug\net6.0\Persistence.pdb
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\obj\Debug\net6.0\Persistence.genruntimeconfig.cache
 C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\obj\Debug\net6.0\ref\Persistence.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\bin\Debug\net6.0\Application.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\Persistence\bin\Debug\net6.0\Application.pdb

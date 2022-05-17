@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Nb+/AWDU5B7BrRtYJTBtyYzWlq3MufxCybuLAcl23cp2ux/UzvPtARWjGqqPrdKNDW8l2hOw+BbW4lb1Q7iKmA==",
+  "dgSpecHash": "jWL+2YA1QcqmuvzM283eRuzphywQMGhmmVkxn1th98nb2mwktzZ2gHR8a2i/v6FJLqQRzAPLjcdlGM5Dhmx0xA==",
   "success": true,
   "projectFilePath": "C:\\Users\\LAWPAVILION\\source\\repos\\UrlShortener\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
-    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512"
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\LAWPAVILION\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

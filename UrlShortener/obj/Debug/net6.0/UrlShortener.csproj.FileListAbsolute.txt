@@ -79,3 +79,8 @@ C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\Hum
 C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\obj\Debug\net6.0\UrlShortener.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\Presentation.xml
+C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\MediatR.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\Application.dll
+C:\Users\LAWPAVILION\source\repos\UrlShortener\UrlShortener\bin\Debug\net6.0\Application.pdb

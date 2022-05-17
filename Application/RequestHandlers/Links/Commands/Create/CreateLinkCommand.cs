@@ -14,7 +14,7 @@ public class CreateLinkCommand: IRequest<string>
     public string Destination { get; set; }
     public string Title { get; set; }
 
-    public class CreateLinkCommandHandler : IRequestHandler<CreateLinkCommand, string>
+    internal class CreateLinkCommandHandler : IRequestHandler<CreateLinkCommand, string>
     {
         private static char[] CHARACTERS = new char[62] {
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -29,7 +29,7 @@ public class CreateLinkCommand: IRequest<string>
         {
             repo = repoManager.LinksRepo;
         }
-        public Task<string> Handle(CreateLinkCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateLinkCommand request, CancellationToken cancellationToken)
         {
             string alias = buildAlias();
             Link link = new()
@@ -38,8 +38,16 @@ public class CreateLinkCommand: IRequest<string>
                 Destination = request.Destination,
                 Title = request.Title,
             };
-            repo.SaveLink(link);
-            return null;
+
+            bool result = await repo.SaveLink(link, cancellationToken);
+            if (result)
+            {
+                return alias;
+            }
+            else
+            {
+                throw new Exception("An unknown error occured");
+            }
         }
 
         private string buildAlias()

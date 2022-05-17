@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UrlShortener.Persistence.Contexts;
+using UrlShortener.Application.Interfaces;
+using UrlShortener.Persistence.Repositories;
 
 namespace UrlShortener.Persistence.Extensions;
 public static class ServicesExtension
@@ -22,5 +24,7 @@ public static class ServicesExtension
                    )
                );
         }
+
+        services.AddScoped<IRepoManager, RepoManager>();
     }
 }
