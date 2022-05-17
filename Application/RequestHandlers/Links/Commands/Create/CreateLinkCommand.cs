@@ -39,7 +39,7 @@ public class CreateLinkCommand: IRequest<string>
                 Title = request.Title,
             };
 
-            bool result = await repo.SaveLink(link, cancellationToken);
+            bool result = await repo.SaveLinkAsync(link, cancellationToken);
             if (result)
             {
                 return alias;

@@ -18,6 +18,9 @@ public class Link
     {
         get
         {
+            if (Clicks == null || Clicks.Count() == 0)
+                return 0;
+
             int total = 0;
             foreach (var click in Clicks)
             {

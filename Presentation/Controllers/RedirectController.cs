@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using UrlShortener.Application.RequestHandlers.Redirects.Query;
 
 namespace UrlShortener.Presentation.Controllers;
-public class RedirectController: ControllerBase
+public class RedirectController : ControllerBase
 {
-    [HttpGet("{id}")]
-    public Task<IActionResult> Redirect([FromRoute] string id)
+    private IMediator mediator;
+
+    public RedirectController(IMediator mediator)
     {
-        throw new NotImplementedException();
+        this.mediator = mediator;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> RedirectAsync([FromRoute] string id)
+    {
+        return RedirectPermanent(await mediator.Send(new RedirectToDestinationQuery { Alias = id }));
     }
 }

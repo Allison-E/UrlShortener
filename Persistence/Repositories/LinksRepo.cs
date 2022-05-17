@@ -17,7 +17,13 @@ internal class LinksRepo : ILinksRepo
         this.context = context;
     }
 
-    public async Task<bool> SaveLink(Link link, CancellationToken cancellationToken = default)
+    public Link GetLink(string alias, CancellationToken cancellationToken = default)
+    {
+        var result = context.Links.Where(x => x.Alias == alias).FirstOrDefault();
+        return result;
+    }
+
+    public async Task<bool> SaveLinkAsync(Link link, CancellationToken cancellationToken = default)
     {
         await context.Links.AddAsync(link, cancellationToken);
         return await context.SaveChangesAsync() > 0 ? true : false;

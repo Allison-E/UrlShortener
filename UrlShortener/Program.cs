@@ -11,8 +11,7 @@ var config = new ConfigurationBuilder()
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
-builder.Services.AddControllers()
-    .AddApplicationPart(typeof(AssemblyReference).Assembly);
+builder.Services.AddControllers().AddApplicationPart(typeof(AssemblyReference).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -20,8 +19,19 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFile = $"{typeof(AssemblyReference).Assembly.GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+    {
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+        {
+            Email = "emmallison13@gmail.com",
+            Name = "Emmanuel Allison",
+            Url = new Uri("https://hallixon.hashnode.dev"),
+        },
+        Description = "An API to create and manage shortened URLs.",
+        Title = "Url Shortener",
+        Version = "v1",
+    });
 });
-builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(config);
 builder.Services.AddApplicationLayer();
 
@@ -38,15 +48,6 @@ app.UseHttpsRedirection();
 
 //app.UseAuthentication();
 //app.UseAuthorization();
-
-
-app.Use(async (context, next) =>
-{
-    var con = context;
-    Console.WriteLine("In the middleware");
-    await next.Invoke();
-    // Do logging or other work that doesn't write to the Response.
-});
 
 app.MapControllers();
 
