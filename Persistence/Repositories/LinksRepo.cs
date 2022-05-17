@@ -28,4 +28,18 @@ internal class LinksRepo : ILinksRepo
         await context.Links.AddAsync(link, cancellationToken);
         return await context.SaveChangesAsync() > 0 ? true : false;
     } 
+
+    public async Task<bool> DeleteLinkAsync(string alias, CancellationToken cancellationToken = default)
+    {
+        var link = context.Links.Where(x => x.Alias == alias).FirstOrDefault();
+
+        if (link == null)
+        {
+            // Todo: Throw an exception?
+            return false;
+        }
+
+        context.Links.Remove(link);
+        return await context.SaveChangesAsync() > 0 ? true : false;
+    }
 }

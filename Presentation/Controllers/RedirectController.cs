@@ -12,9 +12,18 @@ public class RedirectController : ControllerBase
         this.mediator = mediator;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> RedirectAsync([FromRoute] string id)
+    /// <summary>
+    /// Redirects the user to the destination of the shortened link.
+    /// </summary>
+    /// <param name="alias">The alias of the link.</param>
+    /// <remarks>
+    /// For example, if the destination of /rAG2ZGmW is https://google.com,
+    /// the user to Google's homepage.
+    /// </remarks>
+    /// <returns></returns>
+    [HttpGet("{alias}")]
+    public async Task<IActionResult> RedirectAsync([FromRoute] string alias)
     {
-        return RedirectPermanent(await mediator.Send(new RedirectToDestinationQuery { Alias = id }));
+        return RedirectPermanent(await mediator.Send(new RedirectToDestinationQuery { Alias = alias }));
     }
 }

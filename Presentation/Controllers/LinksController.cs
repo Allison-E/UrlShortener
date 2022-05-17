@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using UrlShortener.Application.RequestHandlers.Links.Commands.Create;
+using UrlShortener.Application.RequestHandlers.Links.Commands.Delete;
 using UrlShortener.Application.RequestHandlers.Links.Query;
 
 namespace UrlShortener.Presentation.Controllers;
 
-[Route("links")]
+[Route("[controller]")]
 [Produces("application/json")]
 public class LinksController : ControllerBase
 {
@@ -16,10 +17,15 @@ public class LinksController : ControllerBase
         this.mediator = mediator;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetLinkAsync([FromRoute] string id)
+    /// <summary>
+    /// Gets the details of a link.
+    /// </summary>
+    /// <param name="alias">The alias of the link.</param>
+    /// <returns>A link object.</returns>
+    [HttpGet("{alias}", Name = "GetCreatedLink")]
+    public async Task<IActionResult> GetLinkAsync([FromRoute] string alias)
     {
-        return Ok(await mediator.Send(new GetLinkByAliasQuery { Alias = id }));
+        return Ok(await mediator.Send(new GetLinkByAliasQuery { Alias = alias }));
     }
 
     /// <summary>
@@ -40,11 +46,24 @@ public class LinksController : ControllerBase
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateLinkAsync([FromBody] CreateLinkCommand createLink, CancellationToken cancellationToken = default)
     {
-        return Ok(await mediator.Send(createLink));
+        var alias = await mediator.Send(createLink);
+        var routeValues = new { alias = alias };
+        return CreatedAtRoute("GetCreatedLink", routeValues, alias);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteLinkAsync([FromRoute] string id)
+    /// <summary>
+    /// Deletes a link.
+    /// </summary>
+    /// <param name="alias">The alias of the link.</param>
+    /// <returns></returns>
+    [HttpDelete("{alias}")]
+    public async Task<IActionResult> DeleteLinkAsync([FromRoute] string alias)
+    {
+        return Ok(await mediator.Send(new DeleteLinkByAliasCommand { Alias = alias }));
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateLinkDestinationAsync([FromBody] string destination)
     {
 
     }
