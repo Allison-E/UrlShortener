@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UrlShortener.Application.Interfaces;
+﻿using UrlShortener.Application.Interfaces;
 using UrlShortener.Domain.Models;
 using UrlShortener.Persistence.Contexts;
 

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using MediatR;
 using UrlShortener.Application.Interfaces;
-using UrlShortener.Domain.Utils;
 using UrlShortener.Domain.Models;
+using UrlShortener.Domain.Utils;
 
 namespace UrlShortener.Application.RequestHandlers.Links.Commands.Create;
 public class CreateLinkCommand: IRequest<string>
