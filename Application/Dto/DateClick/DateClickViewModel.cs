@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UrlShortener.Application.Dto.DateClick;
-public class DateClickModel
+public class DateClickViewModel
 {
     public DateTime Date { get; set; }
     public int Clicks { get; set; }

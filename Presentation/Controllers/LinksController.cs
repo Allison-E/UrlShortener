@@ -23,17 +23,18 @@ public class LinksController : ControllerBase
     /// Gets the details of a link.
     /// </summary>
     /// <param name="alias">The alias of the link.</param>
-    /// <returns>A link object.</returns>
+    /// <param name="cancellationToken"></param>
+    /// <returns>A <see cref="LinkViewModel"/>.</returns>
     [HttpGet("{alias}", Name = "GetCreatedLink")]
-    public async Task<IActionResult> GetLinkAsync([FromRoute] string alias)
+    public async Task<IActionResult> GetLinkAsync([FromRoute] string alias, CancellationToken cancellationToken = default)
     {
-        return Ok(await mediator.Send(new GetLinkByAliasQuery { Alias = alias }));
+        return Ok(await mediator.Send(new GetLinkByAliasQuery { Alias = alias }, cancellationToken));
     }
 
     /// <summary>
     /// Creates a shortened link from the given destination URL given.
     /// </summary>
-    /// <param name="createLink"></param>
+    /// <param name="createLink">The link object.</param>
     /// <param name="cancellationToken"></param>
     /// <remarks>
     /// Sample request:
@@ -46,9 +47,13 @@ public class LinksController : ControllerBase
     /// </remarks>
     /// <returns>The alias of the shortened URL.</returns>
     [HttpPost("generate")]
-    public async Task<IActionResult> GenerateLinkAsync([FromBody] CreateLinkCommand createLink, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GenerateLinkAsync([FromBody] LinkCreateModel createLink, CancellationToken cancellationToken = default)
     {
-        var alias = await mediator.Send(createLink);
+        var alias = await mediator.Send(new CreateLinkCommand
+        {
+            Destination = createLink.Destination,
+            Title = createLink.Title,
+        }, cancellationToken);
         var routeValues = new { alias = alias };
         return CreatedAtRoute("GetCreatedLink", routeValues, alias);
     }
@@ -58,26 +63,28 @@ public class LinksController : ControllerBase
     /// </summary>
     /// <param name="alias">The alias of the link.</param>
     /// <param name="link">Updated link object.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpPut("{alias}")]
-    public async Task<IActionResult> UpdateLinkAsync([FromRoute] string alias, [FromBody] LinkEditModel link)
+    public async Task<IActionResult> UpdateLinkAsync([FromRoute] string alias, [FromBody] LinkEditModel link, CancellationToken cancellationToken = default)
     {
         return Ok(await mediator.Send(new UpdateLinkCommand { 
             AliasKey = alias, 
             NewKey = link.Alias, 
             Destination = link.Destination, 
             Title = link.Title
-        }));
+        }, cancellationToken));
     }
 
     /// <summary>
     /// Deletes a link.
     /// </summary>
     /// <param name="alias">The alias of the link.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpDelete("{alias}")]
-    public async Task<IActionResult> DeleteLinkAsync([FromRoute] string alias)
+    public async Task<IActionResult> DeleteLinkAsync([FromRoute] string alias, CancellationToken cancellationToken = default)
     {
-        return Ok(await mediator.Send(new DeleteLinkByAliasCommand { Alias = alias }));
+        return Ok(await mediator.Send(new DeleteLinkByAliasCommand { Alias = alias }, cancellationToken));
     }
 }

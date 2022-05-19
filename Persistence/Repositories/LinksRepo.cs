@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UrlShortener.Application.Exceptions;
 using UrlShortener.Application.Interfaces;
 using UrlShortener.Domain.Models;
 using UrlShortener.Persistence.Contexts;
@@ -18,7 +19,11 @@ internal class LinksRepo : ILinksRepo
         var result = context.Links
             .Where(x => x.Alias == alias)
             .Include(x => x.Clicks)
-            .FirstOrDefault();        
+            .FirstOrDefault();
+
+        if (result == null)
+            throw new NotFoundException($"Link not found.");
+
         return result;
     }
 
@@ -33,10 +38,7 @@ internal class LinksRepo : ILinksRepo
         var link = context.Links.Where(x => x.Alias == alias).FirstOrDefault();
 
         if (link == null)
-        {
-            // Todo: Throw an exception?
-            return false;
-        }
+            throw new NotFoundException($"Link with alias: {alias} not found.");
 
         context.Links.Remove(link);
         return await context.SaveChangesAsync(cancellationToken) > 0 ? true : false;

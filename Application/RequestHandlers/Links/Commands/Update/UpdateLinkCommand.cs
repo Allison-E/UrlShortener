@@ -23,9 +23,6 @@ public class UpdateLinkCommand: IRequest
         {
             var link = repo.Find(request.AliasKey);
 
-            if (link == null)
-                throw new NotFoundException();
-
             if (request.NewKey != null)
                 link.Alias = request.NewKey;
             if (request.Destination != null)

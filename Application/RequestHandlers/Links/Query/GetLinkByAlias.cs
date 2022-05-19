@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using AutoMapper;
 using MediatR;
-using UrlShortener.Domain.Models;
-using System.Threading.Tasks;
+using UrlShortener.Application.Dto.Link;
 using UrlShortener.Application.Interfaces;
 
 namespace UrlShortener.Application.RequestHandlers.Links.Query;
-public class GetLinkByAliasQuery: IRequest<Link>
+public class GetLinkByAliasQuery: IRequest<LinkViewModel>
 {
     public string Alias { get; set; }
 
-    internal class GetLinkByAliasQueryHandler : IRequestHandler<GetLinkByAliasQuery, Link>
+    internal class GetLinkByAliasQueryHandler : IRequestHandler<GetLinkByAliasQuery, LinkViewModel>
     {
         private ILinksRepo repo;
+        private IMapper mapper;
 
-        public GetLinkByAliasQueryHandler(IRepoManager repoManager)
+        public GetLinkByAliasQueryHandler(IRepoManager repoManager, IMapper mapper)
         {
             repo = repoManager.LinksRepo;
+            this.mapper = mapper;
         }
-        public Task<Link> Handle(GetLinkByAliasQuery request, CancellationToken cancellationToken)
+        public Task<LinkViewModel> Handle(GetLinkByAliasQuery request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>  repo.Find(request.Alias));
+            var link = repo.Find(request.Alias);
+            return Task.Run(() => mapper.Map<LinkViewModel>(link));
         }
     }
 }

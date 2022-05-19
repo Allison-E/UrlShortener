@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
 using MediatR;
-using UrlShortener.Application.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace UrlShortener.Application.Extensions;
 public static class ServicesExtension
@@ -14,5 +8,6 @@ public static class ServicesExtension
     public static void AddApplicationLayer(this IServiceCollection services)
     {
         services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
     }
 }

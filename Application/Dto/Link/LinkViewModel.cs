@@ -11,7 +11,7 @@ public class LinkViewModel
     public string Alias { get; set; }
     public string Title { get; set; }
     public string Destination { get; set; }
-    public IEnumerable<DateClickModel> Clicks { get; set; }
+    public IEnumerable<DateClickViewModel> Clicks { get; set; }
     public bool IsActive { get;set; }
     public DateTime CreatedAt { get; set; }
     public int TotalClicks { get; set; }
