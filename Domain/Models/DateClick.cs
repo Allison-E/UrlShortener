@@ -3,9 +3,8 @@
 /// <summary>
 /// Represents the number of clicks to a link for a specific date.
 /// </summary>
-public class DateClick
+public class DateClick: BaseEntity
 {
-    public int Id { get; set; }
     public DateTime Date { get; set; }
     public int Clicks { get; set; }
 }

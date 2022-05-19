@@ -1,8 +1,6 @@
 ﻿namespace UrlShortener.Domain.Models;
-public class Link
+public class Link: BaseEntity
 {
-    public int Id { get; set; }
-
     /// <summary>
     /// This is unique for every shortened url and would be used for redirection.
     /// </summary>
