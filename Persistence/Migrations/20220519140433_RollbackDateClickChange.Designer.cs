@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrlShortener.Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using UrlShortener.Persistence.Contexts;
 namespace UrlShortener.Persistence.Migrations
 {
     [DbContext(typeof(LinksContext))]
-    partial class LinksContextModelSnapshot : ModelSnapshot
+    [Migration("20220519140433_RollbackDateClickChange")]
+    partial class RollbackDateClickChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

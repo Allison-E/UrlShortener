@@ -6,6 +6,7 @@ namespace UrlShortener.Persistence.Contexts;
 public class LinksContext : DbContext
 {
     public DbSet<Link> Links { get; set; }
+    public DbSet<DateClick> DateClicks { get; set; }
 
     public LinksContext(DbContextOptions<LinksContext> dbContextOptions) : base(dbContextOptions)
     { }

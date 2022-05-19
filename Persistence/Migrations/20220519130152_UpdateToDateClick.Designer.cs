@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrlShortener.Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using UrlShortener.Persistence.Contexts;
 namespace UrlShortener.Persistence.Migrations
 {
     [DbContext(typeof(LinksContext))]
-    partial class LinksContextModelSnapshot : ModelSnapshot
+    [Migration("20220519130152_UpdateToDateClick")]
+    partial class UpdateToDateClick
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace UrlShortener.Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValue(new DateTime(2022, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc));
 
-                    b.Property<int?>("LinkId")
+                    b.Property<int>("LinkId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -87,10 +89,13 @@ namespace UrlShortener.Persistence.Migrations
 
             modelBuilder.Entity("UrlShortener.Domain.Models.DateClick", b =>
                 {
-                    b.HasOne("UrlShortener.Domain.Models.Link", null)
+                    b.HasOne("UrlShortener.Domain.Models.Link", "Link")
                         .WithMany("Clicks")
                         .HasForeignKey("LinkId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Link");
                 });
 
             modelBuilder.Entity("UrlShortener.Domain.Models.Link", b =>

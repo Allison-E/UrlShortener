@@ -12,21 +12,21 @@ public class Link: BaseEntity
 
     public IEnumerable<DateClick> Clicks { get; set; }
 
-    public int ClickCount
-    {
-        get
-        {
-            if (Clicks == null || Clicks.Count() == 0)
-                return 0;
+    //public int ClickCount
+    //{
+    //    get
+    //    {
+    //        if (Clicks == null || Clicks.Count() == 0)
+    //            return 0;
 
-            int total = 0;
-            foreach (var click in Clicks)
-            {
-                total += click.Clicks;
-            }
-            return total;
-        }
-    }
+    //        int total = 0;
+    //        foreach (var click in Clicks)
+    //        {
+    //            total += click.Clicks;
+    //        }
+    //        return total;
+    //    }
+    //}
 
     public bool IsActive { get; set; }
 

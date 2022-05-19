@@ -19,17 +19,18 @@ public class RedirectToDestinationQuery : IRequest<string>
         public Task<string> Handle(RedirectToDestinationQuery request, CancellationToken cancellationToken)
         {
             var link = repo.Find(request.Alias);
-            Task.Run(() => UpdateDateClick(link));
+            string destination = link.Destination.ToString();
+            UpdateDateClick(link);
 
             return Task.Run(() =>
             {
-                return link.Destination;
+                return destination;
             });
         }
 
         private void UpdateDateClick(Link link)
         {
-            if (link.Clicks == null)
+            if (link.Clicks.Count() == 0)
             {
                 DateClick click = new()
                 {
