@@ -58,7 +58,7 @@ namespace UrlShortener.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Alias")
+                    b.Property<string>("AliasKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using UrlShortener.Application.RequestHandlers.Links.Commands.Create;
 using UrlShortener.Application.RequestHandlers.Links.Commands.Delete;
 using UrlShortener.Application.RequestHandlers.Links.Query;
+using UrlShortener.Application.Dto.Link;
+using UrlShortener.Application.RequestHandlers.Links.Commands.Update;
 
 namespace UrlShortener.Presentation.Controllers;
 
@@ -52,6 +54,23 @@ public class LinksController : ControllerBase
     }
 
     /// <summary>
+    /// Updates a link.
+    /// </summary>
+    /// <param name="alias">The alias of the link.</param>
+    /// <param name="link">Updated link object.</param>
+    /// <returns></returns>
+    [HttpPut("{alias}")]
+    public async Task<IActionResult> UpdateLinkAsync([FromRoute] string alias, [FromBody] LinkEditModel link)
+    {
+        return Ok(await mediator.Send(new UpdateLinkCommand { 
+            AliasKey = alias, 
+            NewKey = link.Alias, 
+            Destination = link.Destination, 
+            Title = link.Title
+        }));
+    }
+
+    /// <summary>
     /// Deletes a link.
     /// </summary>
     /// <param name="alias">The alias of the link.</param>
@@ -60,11 +79,5 @@ public class LinksController : ControllerBase
     public async Task<IActionResult> DeleteLinkAsync([FromRoute] string alias)
     {
         return Ok(await mediator.Send(new DeleteLinkByAliasCommand { Alias = alias }));
-    }
-
-    [HttpPut]
-    public async Task<IActionResult> UpdateLinkDestinationAsync([FromBody] string destination)
-    {
-        throw new NotImplementedException();
     }
 }

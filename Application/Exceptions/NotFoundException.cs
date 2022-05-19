@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UrlShortener.Application.Exceptions;
+﻿namespace UrlShortener.Application.Exceptions;
 
 /// <summary>
 /// Represents errors that occur when a requested resource is not found.
