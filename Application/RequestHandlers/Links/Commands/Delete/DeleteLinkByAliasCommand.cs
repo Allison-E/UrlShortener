@@ -21,7 +21,7 @@ public class DeleteLinkByAliasCommand: IRequest
 
         public async Task<Unit> Handle(DeleteLinkByAliasCommand request, CancellationToken cancellationToken)
         {
-            return await repo.DeleteLinkAsync(request.Alias, cancellationToken) ? new Unit() : throw new Exception("Error, error");
+            return await repo.DeleteAsync(request.Alias, cancellationToken) ? new Unit() : throw new Exception("Error, error");
         }
     }
 }

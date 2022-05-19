@@ -12,19 +12,19 @@ internal class LinksRepo : ILinksRepo
         this.context = context;
     }
 
-    public Link GetLink(string alias, CancellationToken cancellationToken = default)
+    public Link Find(string alias)
     {
-        var result = context.Links.Where(x => x.Alias == alias).FirstOrDefault();
+        var result = context.Links.Join().Where(x => x.Alias == alias).FirstOrDefault();
         return result;
     }
 
-    public async Task<bool> SaveLinkAsync(Link link, CancellationToken cancellationToken = default)
+    public async Task<bool> SaveAsync(Link link, CancellationToken cancellationToken = default)
     {
         await context.Links.AddAsync(link, cancellationToken);
-        return await context.SaveChangesAsync() > 0 ? true : false;
+        return await context.SaveChangesAsync(cancellationToken) > 0 ? true : false;
     } 
 
-    public async Task<bool> DeleteLinkAsync(string alias, CancellationToken cancellationToken = default)
+    public async Task<bool> DeleteAsync(string alias, CancellationToken cancellationToken = default)
     {
         var link = context.Links.Where(x => x.Alias == alias).FirstOrDefault();
 
@@ -35,6 +35,12 @@ internal class LinksRepo : ILinksRepo
         }
 
         context.Links.Remove(link);
-        return await context.SaveChangesAsync() > 0 ? true : false;
+        return await context.SaveChangesAsync(cancellationToken) > 0 ? true : false;
+    }
+
+    public async Task<bool> UpdateAsync(Link link, CancellationToken cancellationToken = default)
+    {
+        context.Update(link);
+        return await context.SaveChangesAsync(cancellationToken) > 0 ? true : false;
     }
 }

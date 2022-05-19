@@ -65,6 +65,6 @@ public class LinksController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateLinkDestinationAsync([FromBody] string destination)
     {
-
+        throw new NotImplementedException();
     }
 }

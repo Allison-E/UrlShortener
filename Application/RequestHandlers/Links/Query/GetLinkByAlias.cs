@@ -22,7 +22,7 @@ public class GetLinkByAliasQuery: IRequest<Link>
         }
         public Task<Link> Handle(GetLinkByAliasQuery request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>  repo.GetLink(request.Alias));
+            return Task.Run(() =>  repo.Find(request.Alias));
         }
     }
 }
